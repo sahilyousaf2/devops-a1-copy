@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Portfolio - Hero Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 600px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-3d {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .cube {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cube-face:nth-child(1) { background: rgba(102, 126, 234, 0.7); transform: translateZ(125px); }
+        .cube-face:nth-child(2) { background: rgba(118, 75, 162, 0.7); transform: rotateY(180deg) translateZ(125px); }
+        .cube-face:nth-child(3) { background: rgba(100, 100, 200, 0.7); transform: rotateY(90deg) translateZ(125px); }
+        .cube-face:nth-child(4) { background: rgba(80, 50, 140, 0.7); transform: rotateY(-90deg) translateZ(125px); }
+        .cube-face:nth-child(5) { background: rgba(120, 80, 180, 0.7); transform: rotateX(90deg) translateZ(125px); }
+        .cube-face:nth-child(6) { background: rgba(70, 40, 120, 0.7); transform: rotateX(-90deg) translateZ(125px); }
+
+        @keyframes rotateCube {
+            from { transform: rotateX(0) rotateY(0); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; padding: 50px 20px; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            .hero-3d { margin-top: 40px; }
+            .cube { width: 150px; height: 150px; }
+            .cube-face { width: 150px; height: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Creative Developer | 3D Designer | Full-Stack Engineer</p>
+            <a href="#projects" class="cta-button">Explore My Work</a>
+        </div>
+        <div class="hero-3d">
+            <div class="cube">
+                <div class="cube-face">3D</div>
+                <div class="cube-face">Design</div>
+                <div class="cube-face">Code</div>
+                <div class="cube-face">Dev</div>
+                <div class="cube-face">Web</div>
+                <div class="cube-face">Art</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
